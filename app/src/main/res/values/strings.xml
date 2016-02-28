@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Simple List Widget</string>
+    <string name="list_title_label">Edit Title</string>
+    <string name="list_title_hint">Edit the list title</string>
+
+    <string name="list_text_size">Select Text Size</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+
+    <string name="list_text_color">Select Text Color</string>
+    <string name="list_bg_color">Select Background Color</string>
+
+    <string name="sample">Sample Text</string>
+    <string name="button_set">Set</string>
+    <string name="button_cancel">Cancel</string>
+
+    <string name="list_title">Title</string>
+
+    <string name="add_item_hint">Enter an item for the list</string>
+
+    <string name="click_add">Add an item to the list</string>
+    <string name="click_settings">Settings</string>
+
+    <string name="add_item_title">Add Item</string>
+    <string name="delete_item_title">Delete Item</string>
+
+    <string name="settingsactivity_label">Settings</string>
+    <string name="listadditemactivity_label">Add Item:</string>
+
+    <string name="delete_confirmation">Delete this item?</string>
+
+    <string name="all_crossed_toast_front">All items in \"</string>
+    <string name="all_crossed_toast_back">\" had been crossed out.</string>
+
+    <string name="instructions">To create a list widget:
+        \n1. Open the app drawer and press the Widgets tab.
+        \n2. Find the SimpleListWidget and press and hold onto it.
+        \n3. Drag it to a spot on the home screen.
+        \n4. Resize it to the size that you want.
+        \n\n- Click an item to CROSS it out.
+        \n- Click an item again to DELETE it.</string>
+
+    <string name="instructions_settings">Changes the title,
+        text size, text color, and background</string>
+
+    <string name="instructions_add">Add items on to the list</string>
+
+    <string name="instructions_title">INSTRUCTIONS</string>
+</resources>

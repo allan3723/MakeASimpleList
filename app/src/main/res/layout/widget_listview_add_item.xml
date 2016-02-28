@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    >
+
+    <EditText
+          android:id="@+id/listview_add_item"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:gravity="top"
+          android:layout_weight="1"
+          android:hint="@string/add_item_hint"
+    />
+
+    <ImageButton
+        android:id="@+id/add_item_done"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_done"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/transparent"
+        android:layout_gravity="end"
+        android:layout_weight="0.2"
+        android:scaleType="fitXY"
+        />
+
+</LinearLayout>

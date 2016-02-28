@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="3dp"
+    android:background="@drawable/rectangle_blue_bg">
+
+
+    <LinearLayout
+        android:id="@+id/list_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/list_title"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:gravity="center_vertical|start"
+            android:layout_margin="15dp"
+            android:text="@string/list_title"
+            android:layout_weight="1"
+            android:textColor="@color/colorBlack"
+            android:singleLine="true" >
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/settings_item"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_action_settings"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.2"
+            android:contentDescription="@string/click_settings"
+            />
+
+        <ImageButton
+            android:id="@+id/add_item"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_content_add"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.2"
+            android:layout_marginRight="5dp"
+            android:contentDescription="@string/click_add"
+            />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/list_toolbar"
+        android:layout_margin="5dp"
+        android:scrollbars="none"
+        android:gravity="center"
+        android:loopViews="true"
+        android:clickable="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/list_toolbar">
+
+    <ImageButton
+        android:id="@+id/empty"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_content_add_circle_outline"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/click_add"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
