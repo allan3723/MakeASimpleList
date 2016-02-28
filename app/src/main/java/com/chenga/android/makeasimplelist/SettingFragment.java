@@ -303,4 +303,5 @@ public class SettingFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

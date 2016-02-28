@@ -30,15 +30,18 @@
         </activity>
         <activity android:name=".SettingActivity"
                   android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-                  android:label="@string/settingsactivity_label">
+                  android:label="@string/settingsactivity_label"
+                  android:excludeFromRecents="true">
         </activity>
         <activity android:name=".ListAddItemActivity"
                   android:label="@string/listadditemactivity_label"
-                  android:theme="@style/Theme.AppCompat.Light.Dialog">
+                  android:theme="@style/Theme.AppCompat.Light.Dialog"
+                  android:excludeFromRecents="true">
         </activity>
         <activity android:name=".ListDeleteItemActivity"
                   android:label=""
-                  android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" >
+                  android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"
+                  android:excludeFromRecents="true">
         </activity>
     </application>
 
