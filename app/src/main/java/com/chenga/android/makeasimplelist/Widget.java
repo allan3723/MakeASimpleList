@@ -11,6 +11,14 @@ public class Widget implements Serializable {
     private String mAppWidgetId;
     private String mList;
     private String mStrikeThrough;
+    private int mOnClickOption;
+    private String mBold;
+
+    public static final int DEFAULT = 0;
+    public static final int STRIKETHRU = 1;
+    public static final int BOLD = 2;
+    public static final int DELETE = 3;
+    public static final int STB = 4;
 
     public Widget() {
         mTitle = new String();
@@ -22,6 +30,7 @@ public class Widget implements Serializable {
         mTextSize = 0;
         mTextColor = 0;
         mBGColor = 0;
+        mOnClickOption = 0;
     }
 
     public String getTitle() {
@@ -78,5 +87,21 @@ public class Widget implements Serializable {
 
     public void setStrikeThrough(String strikeThrough) {
         mStrikeThrough = strikeThrough;
+    }
+
+    public int getOnClickOption() {
+        return mOnClickOption;
+    }
+
+    public void setOnClickOption(int onClickOption) {
+        mOnClickOption = onClickOption;
+    }
+
+    public String getBold() {
+        return mBold;
+    }
+
+    public void setBold(String bold) {
+        mBold = bold;
     }
 }

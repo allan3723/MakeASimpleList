@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-    android:layout_height="match_parent"
+              android:layout_height="match_parent"
               android:orientation="vertical">
 
     <TextView
@@ -24,6 +28,48 @@
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
         android:paddingBottom="5dp"
+        android:text="@string/list_click_effect"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center">
+
+        <ToggleButton
+            android:id="@+id/list_click_strikethru"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:textOn="@string/list_click_strikethru"
+            android:textOff="@string/list_click_strikethru"/>
+
+        <ToggleButton
+            android:id="@+id/list_click_bold"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:textOn="@string/list_click_bold"
+            android:textOff="@string/list_click_bold"/>
+
+        <ToggleButton
+            android:id="@+id/list_click_delete"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:textOn="@string/list_click_delete"
+            android:textOff="@string/list_click_delete"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="5dp"
         android:text="@string/list_text_size"
         style="?android:listSeparatorTextViewStyle"/>
 
@@ -34,28 +80,31 @@
         android:layout_marginRight="16dp"
         android:gravity="center">
 
-        <Button
+        <ToggleButton
             android:id="@+id/set_text_small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:text="@string/small"/>
+            android:textOn="@string/small"
+            android:textOff="@string/small"/>
 
-        <Button
+        <ToggleButton
             android:id="@+id/set_text_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:text="@string/medium"/>
+            android:textOn="@string/medium"
+            android:textOff="@string/medium"/>
 
-        <Button
+        <ToggleButton
             android:id="@+id/set_text_large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="@string/large"/>
+            android:textOn="@string/large"
+            android:textOff="@string/large"/>
     </LinearLayout>
 
     <TextView
@@ -187,3 +236,5 @@
         android:text="@string/sample"/>
 
 </LinearLayout>
+
+</ScrollView>

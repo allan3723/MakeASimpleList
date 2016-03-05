@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
 import android.text.style.StrikethroughSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
@@ -108,10 +109,9 @@ public class WidgetListAdapter implements RemoteViewsService.RemoteViewsFactory 
         String item = itemList.get(position);
         SpannableString ss = new SpannableString(item);
 
-        //Set strike through, bold, and highlight if the item has crossed out
+        //Set strike through and highlight if the item has crossed out
         if (strikethrough != null) {
             if (strikethrough.charAt(position) == 't') {
-                ss.setSpan(new StyleSpan(Typeface.BOLD), 0, item.length(), 0);
                 ss.setSpan(new StrikethroughSpan(), 0, item.length(), 0);
 
                 int color;
@@ -135,10 +135,20 @@ public class WidgetListAdapter implements RemoteViewsService.RemoteViewsFactory 
                         color = ContextCompat.getColor(mContext, R.color.colorHWhite);
                 }
 
-                remoteViews.setInt(R.id.items, "setBackgroundColor", color);
+                //remoteViews.setInt(R.id.items, "setBackgroundColor", color);
+                ss.setSpan(new BackgroundColorSpan(color), 0, item.length(), 0);
             }
             else {
-                remoteViews.setInt(R.id.items, "setBackgroundColor", Color.TRANSPARENT);
+                //remoteViews.setInt(R.id.items, "setBackgroundColor", Color.TRANSPARENT);
+                ss.setSpan(new BackgroundColorSpan(Color.TRANSPARENT), 0, item.length(), 0);
+            }
+        }
+
+        //Now set bold
+        String bold = widget.getBold();
+        if (bold != null) {
+            if (bold.charAt(position) == 't') {
+                ss.setSpan(new StyleSpan(Typeface.BOLD), 0, item.length(), 0);
             }
         }
 

@@ -19,6 +19,8 @@ public class WidgetCursorWrapper extends CursorWrapper {
         int bgColor = getInt(getColumnIndex(WidgetTable.Cols.BGCOLOR));
         String list = getString(getColumnIndex(WidgetTable.Cols.LIST));
         String strikeThrough = getString(getColumnIndex(WidgetTable.Cols.STRIKETHROUGH));
+        int clickOption = getInt(getColumnIndex(WidgetTable.Cols.CLICKOPTION));
+        String bold = getString(getColumnIndex(WidgetTable.Cols.BOLD));
 
         Widget widget = new Widget(widgetId);
         widget.setTitle(title);
@@ -27,6 +29,8 @@ public class WidgetCursorWrapper extends CursorWrapper {
         widget.setBGColor(bgColor);
         widget.setList(list);
         widget.setStrikeThrough(strikeThrough);
+        widget.setOnClickOption(clickOption);
+        widget.setBold(bold);
 
         return widget;
     }

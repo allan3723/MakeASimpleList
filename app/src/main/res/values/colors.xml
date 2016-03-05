@@ -16,12 +16,12 @@
     <color name="colorDarkGreen">#006400</color>
     <color name="colorDarkBlue">#00007f</color>
 
-    <color name="colorHRed">#FF3232</color>
-    <color name="colorHOrange">#FF6700</color>
-    <color name="colorHYellow">#F3F315</color>
-    <color name="colorHGreen">#83F52C</color>
-    <color name="colorHBlue">#25E8F2</color>
-    <color name="colorHWhite">#c0c0c0</color>
+    <color name="colorHRed">#e57272</color>
+    <color name="colorHOrange">#e5b45b</color>
+    <color name="colorHYellow">#e5e572</color>
+    <color name="colorHGreen">#97d297</color>
+    <color name="colorHBlue">#9bc2cf</color>
+    <color name="colorHWhite">#e5e5e5</color>
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>

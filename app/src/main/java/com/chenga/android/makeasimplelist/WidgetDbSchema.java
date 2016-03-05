@@ -12,6 +12,8 @@ public class WidgetDbSchema {
             public static final String BGCOLOR = "bgcolor";
             public static final String LIST = "list";
             public static final String STRIKETHROUGH = "strikethrough";
+            public static final String CLICKOPTION = "clickoption";
+            public static final String BOLD = "bold";
         }
     }
 }

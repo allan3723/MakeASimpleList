@@ -20,8 +20,8 @@
 
     <ImageButton
         android:id="@+id/add_item_done"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
         android:src="@drawable/ic_action_done"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="16dp"
@@ -29,8 +29,9 @@
         android:layout_marginBottom="5dp"
         android:background="@android:color/transparent"
         android:layout_gravity="end"
+        android:contentDescription="@string/button_set"
         android:layout_weight="0.2"
-        android:scaleType="fitXY"
+        android:scaleType="fitCenter"
         />
 
 </LinearLayout>

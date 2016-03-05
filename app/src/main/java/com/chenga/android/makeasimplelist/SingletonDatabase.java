@@ -109,6 +109,8 @@ public class SingletonDatabase {
         values.put(WidgetTable.Cols.BGCOLOR, widget.getBGColor());
         values.put(WidgetTable.Cols.LIST, widget.getList());
         values.put(WidgetTable.Cols.STRIKETHROUGH, widget.getStrikeThrough());
+        values.put(WidgetTable.Cols.CLICKOPTION, widget.getOnClickOption());
+        values.put(WidgetTable.Cols.BOLD, widget.getBold());
 
         return values;
     }

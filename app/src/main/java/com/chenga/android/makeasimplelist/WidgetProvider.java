@@ -122,7 +122,7 @@ public class WidgetProvider extends AppWidgetProvider {
 
                     if ((mInfo.getTextSize() != 0)) {
                         remoteViews.setTextViewTextSize(R.id.list_title,
-                                TypedValue.COMPLEX_UNIT_SP, mInfo.getTextSize()+TITLE_SIZE_BUFFER);
+                                TypedValue.COMPLEX_UNIT_SP, mInfo.getTextSize() + TITLE_SIZE_BUFFER);
                         newSettings.setTextSize(mInfo.getTextSize());
                         textColorOrSizeChanged = true;
                     }
@@ -132,6 +132,10 @@ public class WidgetProvider extends AppWidgetProvider {
                                 mInfo.getBGColor());
                         newSettings.setBGColor(mInfo.getBGColor());
                         textColorOrSizeChanged = true;
+                    }
+
+                    if ((mInfo.getOnClickOption() != 0)) {
+                        newSettings.setOnClickOption(mInfo.getOnClickOption());
                     }
 
                     if (textColorOrSizeChanged) {
@@ -186,7 +190,7 @@ public class WidgetProvider extends AppWidgetProvider {
                         Log.e(TAG, "Failed to parse JSON", je);
                     }
 
-                    //Add a strikethrough for the new item
+                    //Add strikethrough for the new item
                     String strikeThrough = widget.getStrikeThrough();
                     if (strikeThrough == null) {
                         strikeThrough = "f";
@@ -195,16 +199,25 @@ public class WidgetProvider extends AppWidgetProvider {
                     }
                     widget.setStrikeThrough(strikeThrough);
 
+                    //Add bold for the new item
+                    String bold = widget.getBold();
+                    if (bold == null) {
+                        bold = "f";
+                    } else {
+                        bold = bold + "f";
+                    }
+                    widget.setBold(bold);
+
                     mData.updateWidget(widget);
 
                     AppWidgetManager.getInstance(context).notifyAppWidgetViewDataChanged(
                             widgetId, R.id.list);
                 }
                 break;
-            //Strike through the item that was clicked
+            //Used for when the user clicks an item for the list DESPITE the name
+            //Strike through, bold, OR delete effect
             case ACTION_STRIKETHROUGH_TEXT:
                 int textPosition;
-                boolean twiceClicked = false;
 
                 extras = intent.getExtras();
                 if(extras != null) {
@@ -213,43 +226,91 @@ public class WidgetProvider extends AppWidgetProvider {
                     textPosition = extras.getInt(EXTRA_ITEM);
 
                     Widget widget = mData.getWidget(widgetId);
+                    int clickOption = widget.getOnClickOption();
 
-                    String strikeThrough = widget.getStrikeThrough();
-                    StringBuilder sb = new StringBuilder(strikeThrough);
-                    if (strikeThrough.charAt(textPosition) == 'f') {
-                        sb.setCharAt(textPosition, 't');
-                    } else {
-                        sb.setCharAt(textPosition, 'f');
-                        twiceClicked = true;
+                    switch (clickOption) {
+                        case Widget.STRIKETHRU:
+                            String strikeThrough = widget.getStrikeThrough();
+                            StringBuilder sb = new StringBuilder(strikeThrough);
+                            if (strikeThrough.charAt(textPosition) == 'f') {
+                                sb.setCharAt(textPosition, 't');
+                            } else {
+                                sb.setCharAt(textPosition, 'f');
+                            }
+
+                            widget.setStrikeThrough(sb.toString());
+
+                            //if list has been completed/completely crossed out, show toast
+                            if (widget.getStrikeThrough() != null ) {
+                                if (!(widget.getStrikeThrough().contains("f"))) {
+
+                                    Toast.makeText(context, context
+                                                    .getResources().getString(R.string.all_crossed_toast_front) +
+                                                    widget.getTitle()+ context.getResources()
+                                                    .getString(R.string.all_crossed_toast_back),
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+                            break;
+                        case Widget.BOLD:
+                            String bold = widget.getBold();
+                            sb = new StringBuilder(bold);
+                            if (bold.charAt(textPosition) == 'f') {
+                                sb.setCharAt(textPosition, 't');
+                            } else {
+                                sb.setCharAt(textPosition, 'f');
+                            }
+
+                            widget.setBold(sb.toString());
+                            break;
+                        case Widget.STB:
+                            strikeThrough = widget.getStrikeThrough();
+                            sb = new StringBuilder(strikeThrough);
+                            if (strikeThrough.charAt(textPosition) == 'f') {
+                                sb.setCharAt(textPosition, 't');
+                            } else {
+                                sb.setCharAt(textPosition, 'f');
+                            }
+
+                            widget.setStrikeThrough(sb.toString());
+
+                            bold = widget.getBold();
+                            sb = new StringBuilder(bold);
+                            if (bold.charAt(textPosition) == 'f') {
+                                sb.setCharAt(textPosition, 't');
+                            } else {
+                                sb.setCharAt(textPosition, 'f');
+                            }
+
+                            widget.setBold(sb.toString());
+
+                            //if list has been completed/completely crossed out, show toast
+                            if (widget.getStrikeThrough() != null ) {
+                                if (!(widget.getStrikeThrough().contains("f"))) {
+
+                                    Toast.makeText(context, context
+                                                    .getResources().getString(R.string.all_crossed_toast_front) +
+                                                    widget.getTitle()+ context.getResources()
+                                                    .getString(R.string.all_crossed_toast_back),
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+                            break;
+                        case Widget.DELETE:
+                            Intent deleteIntent = new Intent(context, ListDeleteItemActivity.class);
+                            deleteIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
+                            deleteIntent.putExtra(EXTRA_ITEM, textPosition);
+                            deleteIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(deleteIntent);
+                            return;
+                        default:
+                            break;
                     }
-
-                    widget.setStrikeThrough(sb.toString());
-
-                    //if list has been completed/completely crossed out, show toast
-                    if (widget.getStrikeThrough() != null ) {
-                        if (!(widget.getStrikeThrough().contains("f"))) {
-                            Toast.makeText(context, context
-                                    .getResources().getString(R.string.all_crossed_toast_front) +
-                            widget.getTitle()+ context.getResources()
-                                    .getString(R.string.all_crossed_toast_back),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-
 
                     mData.updateWidget(widget);
 
                     AppWidgetManager.getInstance(context).notifyAppWidgetViewDataChanged(
                             widgetId, R.id.list);
-
-                    //Strike through twice to delete from list
-                    if (twiceClicked) {
-                        Intent deleteIntent = new Intent(context, ListDeleteItemActivity.class);
-                        deleteIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
-                        deleteIntent.putExtra(EXTRA_ITEM, textPosition);
-                        deleteIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(deleteIntent);
-                    }
                 }
                 break;
             //Delete item from list

@@ -3,6 +3,11 @@
     <string name="list_title_label">Edit Title</string>
     <string name="list_title_hint">Edit the list title</string>
 
+    <string name="list_click_effect">Select Click Effect</string>
+    <string name="list_click_strikethru">Strike\nthru</string>
+    <string name="list_click_bold">Bold</string>
+    <string name="list_click_delete">Delete</string>
+
     <string name="list_text_size">Select Text Size</string>
     <string name="small">Small</string>
     <string name="medium">Medium</string>
@@ -38,10 +43,9 @@
         \n2. Find the SimpleListWidget and press and hold onto it.
         \n3. Drag it to a spot on the home screen.
         \n4. Resize it to the size that you want.
-        \n\n- Click an item to CROSS it out.
-        \n- Click an item again to DELETE it.</string>
+        </string>
 
-    <string name="instructions_settings">Changes the title,
+    <string name="instructions_settings">Changes the title, click effect,
         text size, text color, and background</string>
 
     <string name="instructions_add">Add items on to the list</string>

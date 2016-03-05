@@ -24,7 +24,9 @@ public class WidgetBaseHelper extends SQLiteOpenHelper {
                         WidgetTable.Cols.TEXTCOLOR + ", " +
                         WidgetTable.Cols.BGCOLOR + ", " +
                         WidgetTable.Cols.LIST + ", " +
-                        WidgetTable.Cols.STRIKETHROUGH +
+                        WidgetTable.Cols.STRIKETHROUGH + ", " +
+                        WidgetTable.Cols.CLICKOPTION + ", " +
+                        WidgetTable.Cols.BOLD +
                         ")"
         );
     }

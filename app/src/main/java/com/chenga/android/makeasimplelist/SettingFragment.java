@@ -17,15 +17,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class SettingFragment extends Fragment {
 
     private Widget mInfo;
 
     private EditText mTitleField;
-    private Button mTextSmallButton;
-    private Button mTextMediumButton;
-    private Button mTextBigButton;
+    private ToggleButton mStrikeThruButton;
+    private ToggleButton mBoldButton;
+    private ToggleButton mDeleteButton;
+    private ToggleButton mTextSmallButton;
+    private ToggleButton mTextMediumButton;
+    private ToggleButton mTextBigButton;
     private Button mTextBlackButton;
     private Button mTextRedButton;
     private Button mTextBlueButton;
@@ -39,6 +43,7 @@ public class SettingFragment extends Fragment {
 
     private String title;
     private int textColor, textSize, bgColor, bgSColor;
+    private boolean strikethruToggle, boldToggle, deleteToggle;
 
     private static final int SMALL_FONT_SIZE = 10;
     private static final int MEDIUM_FONT_SIZE = 20;
@@ -61,6 +66,9 @@ public class SettingFragment extends Fragment {
             textColor = savedInstanceState.getInt("textcolor", 0);
             bgColor = savedInstanceState.getInt("bgcolor", 0);
             bgSColor = savedInstanceState.getInt("bgscolor", 0);
+            strikethruToggle = savedInstanceState.getBoolean("stToggle", false);
+            boldToggle = savedInstanceState.getBoolean("bToggle", false);
+            deleteToggle = savedInstanceState.getBoolean("dToggle", false);
         }
     }
 
@@ -92,33 +100,130 @@ public class SettingFragment extends Fragment {
 
         mSampleTextField = (TextView) v.findViewById(R.id.info_sample_text);
 
-        mTextSmallButton = (Button) v.findViewById(R.id.set_text_small);
+        mStrikeThruButton = (ToggleButton) v.findViewById(R.id.list_click_strikethru);
+        mBoldButton = (ToggleButton) v.findViewById(R.id.list_click_bold);
+        mDeleteButton = (ToggleButton) v.findViewById(R.id.list_click_delete);
+
+        mStrikeThruButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                strikethruToggle = !strikethruToggle;
+
+                if (boldToggle && strikethruToggle) {
+                    mInfo.setOnClickOption(Widget.STB);
+                } else {
+                    if (strikethruToggle) {
+                        mInfo.setOnClickOption(Widget.STRIKETHRU);
+                    } else {
+                        //false
+                        if (boldToggle) {
+                            mInfo.setOnClickOption(Widget.BOLD);
+                        } else {
+                            //everything off
+                            mInfo.setOnClickOption(Widget.DEFAULT);
+                        }
+                    }
+                }
+
+                if (strikethruToggle) {
+                    mStrikeThruButton.setChecked(true);
+                    mDeleteButton.setChecked(false);
+                } else {
+                    mStrikeThruButton.setChecked(false);
+                }
+            }
+        });
+
+
+        mBoldButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boldToggle = !boldToggle;
+
+                if (strikethruToggle && boldToggle) {
+                    mInfo.setOnClickOption(Widget.STB);
+                } else {
+                    if (boldToggle) {
+                        mInfo.setOnClickOption(Widget.BOLD);
+                    } else {
+                        //false
+                        if (strikethruToggle) {
+                            mInfo.setOnClickOption(Widget.STRIKETHRU);
+                        } else {
+                            //everything off
+                            mInfo.setOnClickOption(Widget.DEFAULT);
+                        }
+                    }
+                }
+
+                if (boldToggle) {
+                    mBoldButton.setChecked(true);
+                    mDeleteButton.setChecked(false);
+                } else {
+                    mBoldButton.setChecked(false);
+                }
+            }
+        });
+
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteToggle = !deleteToggle;
+
+                if(deleteToggle) {
+                    mBoldButton.setChecked(false);
+                    mStrikeThruButton.setChecked(false);
+                    mDeleteButton.setChecked(true);
+
+                    mInfo.setOnClickOption(Widget.DELETE);
+                } else {
+                    mDeleteButton.setChecked(false);
+                    mInfo.setOnClickOption(0);
+                }
+            }
+        });
+
+
+        mTextSmallButton = (ToggleButton) v.findViewById(R.id.set_text_small);
+        mTextMediumButton = (ToggleButton) v.findViewById(R.id.set_text_medium);
+        mTextBigButton = (ToggleButton) v.findViewById(R.id.set_text_large);
+
         mTextSmallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mInfo.setTextSize(SMALL_FONT_SIZE);
                 mSampleTextField.setTextSize(TypedValue.COMPLEX_UNIT_SP, SMALL_FONT_SIZE);
                 textSize = SMALL_FONT_SIZE;
+
+                mTextSmallButton.setChecked(true);
+                mTextMediumButton.setChecked(false);
+                mTextBigButton.setChecked(false);
             }
         });
 
-        mTextMediumButton = (Button) v.findViewById(R.id.set_text_medium);
         mTextMediumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mInfo.setTextSize(MEDIUM_FONT_SIZE);
                 mSampleTextField.setTextSize(TypedValue.COMPLEX_UNIT_SP, MEDIUM_FONT_SIZE);
                 textSize = MEDIUM_FONT_SIZE;
+
+                mTextSmallButton.setChecked(false);
+                mTextMediumButton.setChecked(true);
+                mTextBigButton.setChecked(false);
             }
         });
 
-        mTextBigButton = (Button) v.findViewById(R.id.set_text_large);
         mTextBigButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mInfo.setTextSize(LARGE_FONT_SIZE);
                 mSampleTextField.setTextSize(TypedValue.COMPLEX_UNIT_SP, LARGE_FONT_SIZE);
                 textSize = LARGE_FONT_SIZE;
+
+                mTextSmallButton.setChecked(false);
+                mTextMediumButton.setChecked(false);
+                mTextBigButton.setChecked(true);
             }
         });
 
@@ -277,6 +382,9 @@ public class SettingFragment extends Fragment {
         savedInstanceState.putInt("textcolor", textColor);
         savedInstanceState.putInt("bgcolor", bgColor);
         savedInstanceState.putInt("bgscolor", bgSColor);
+        savedInstanceState.putBoolean("stToggle", strikethruToggle);
+        savedInstanceState.putBoolean("dToggle", deleteToggle);
+        savedInstanceState.putBoolean("bToggle", boldToggle);
 
     }
 
