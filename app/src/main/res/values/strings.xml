@@ -43,6 +43,10 @@
         \n2. Find the SimpleListWidget and press and hold onto it.
         \n3. Drag it to a spot on the home screen.
         \n4. Resize it to the size that you want.
+        \n\n- To enable an bold/strike-through, enable it in the settings and press an
+        item in the list
+        \n- To erase the bold/strike-through effect, press the item
+        again while under the same effect
         </string>
 
     <string name="instructions_settings">Changes the title, click effect,

@@ -1,5 +1,11 @@
 package com.chenga.android.makeasimplelist;
 
+/*
+* A dialog that ask if the user is certain that they want to delete
+* the item off the list. This fragment is created when the delete on-click
+* effect is selected and a user clicks an item on their list.
+ */
+
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,5 +1,11 @@
 package com.chenga.android.makeasimplelist;
 
+/*
+* The widget's broadcast receiver. Receives which buttons get pressed on the
+* widget and calls the appropriate activity to take care of it. Also updates
+* the database
+ */
+
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;

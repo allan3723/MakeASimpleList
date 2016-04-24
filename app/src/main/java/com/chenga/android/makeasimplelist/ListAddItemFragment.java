@@ -1,5 +1,10 @@
 package com.chenga.android.makeasimplelist;
 
+/*
+* Fragment that gets called when the add button is pressed.
+* Allows the user to add items onto their list.
+ */
+
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;

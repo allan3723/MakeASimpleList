@@ -1,11 +1,18 @@
 package com.chenga.android.makeasimplelist;
 
+/*
+* ListView's adapter via remoteviews to control the items in the list.
+* Called when the list need updating such as when items are added,
+* colors/size are changed, and on-click effects.
+ */
+
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.style.BackgroundColorSpan;
@@ -44,6 +51,7 @@ public class WidgetListAdapter implements RemoteViewsService.RemoteViewsFactory 
         itemList = new ArrayList();
     }
 
+    //Update the list when items are added/deleted
     @Override
     public void onDataSetChanged() {
         mData = SingletonDatabase.get(mContext);
@@ -97,6 +105,8 @@ public class WidgetListAdapter implements RemoteViewsService.RemoteViewsFactory 
         return position;
     }
 
+    //Get the current location of clicked item and get the current
+    //settings and set it to the current item
     @Override
     public RemoteViews getViewAt(int position) {
         final RemoteViews remoteViews =

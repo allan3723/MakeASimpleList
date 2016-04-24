@@ -1,5 +1,10 @@
 package com.chenga.android.makeasimplelist;
 
+/*
+* Main object class. Contains all methods and variables
+* that is needed to make the list widget.
+ */
+
 import java.io.Serializable;
 
 public class Widget implements Serializable {

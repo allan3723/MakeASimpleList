@@ -1,5 +1,10 @@
 package com.chenga.android.makeasimplelist;
 
+/*
+* Called when the settings button is pressed. This creates a new fragment
+* where you can change the background color, text color/size, title,
+* and on-click effect
+ */
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;

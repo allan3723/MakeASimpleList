@@ -1,5 +1,10 @@
 package com.chenga.android.makeasimplelist;
 
+/*
+* Cursor wrapper for the database. Retrieves the widget from
+* the database.
+ */
+
 import android.database.Cursor;
 import android.database.CursorWrapper;
 

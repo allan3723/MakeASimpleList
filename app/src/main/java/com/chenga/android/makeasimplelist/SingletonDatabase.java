@@ -1,5 +1,10 @@
 package com.chenga.android.makeasimplelist;
 
+/*
+* A singleton class that contains the method for the
+* database manipulation.
+ */
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
