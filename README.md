@@ -1,4 +1,4 @@
-# List Widget
+# MakeASimpleList (List Widget)
 
 A homescreen widget based Android app. 
 Creates a resizable to-do-list. 
